@@ -10,6 +10,7 @@ typedef struct __Process
   uint32_t service; // time required to process
   uint32_t wait;    // waiting time for process to start running from arrival (running - ready)
   uint32_t tat;     // total turnaround time = waiting + service time
+  uint32_t rt;      // remaining time for process
 
   bool operator<(const struct __Process &o) const
   {
@@ -20,5 +21,6 @@ typedef struct __Process
 void runFCFS(Process p[], int num);
 void runSJFS(Process p[], int num);
 void runRR(Process p[], int num);
+void runSRT(Process p[], int num);
 
 #endif

@@ -1,16 +1,19 @@
 #include <bits/stdc++.h>
+#include <stdlib.h>
 #include "process.h"
 
 using namespace std;
 
-bool cmpArrival(const Process &p1, const Process &p2)
+int cmpArrival(const void *a, const void *b)
 {
-  return p1.arrival < p2.arrival; // sort in ascending order of process arrival. FCFS
+  Process *p1 = (Process *)a;
+  Process *p2 = (Process *)b;
+  return p1->arrival < p2->arrival ? -1 : (p1->arrival > p2->arrival ? 1 : 0);
 }
 
 void runSJFS(Process p[], int num)
 {
-  sort(p, p + num, cmpArrival);
+  qsort(p, num, sizeof(p[0]), cmpArrival);
 
   // wait queue to maintain process with min service time at top
   priority_queue<Process> pq;
