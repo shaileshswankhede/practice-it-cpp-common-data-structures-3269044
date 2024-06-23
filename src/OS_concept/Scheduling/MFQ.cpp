@@ -1,3 +1,9 @@
+// Multiple queues with decreasing order of priority and increasing quantum time
+// Processes are added to queue and processed in FCFS.
+// If process is taking more time, it is bumped to higher order queue
+// Idea is even though you don't get to run often, you get higher quantum of time when you get CPUI.
+// This scheme favours processes that can quickly enter and exit
+
 #include <stdio.h>
 #include <stdlib.h>
 
