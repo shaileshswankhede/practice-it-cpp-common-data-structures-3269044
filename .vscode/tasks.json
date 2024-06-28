@@ -6,6 +6,7 @@
       "command": "/usr/bin/g++",
       "args": [
         "-std=c++20",
+        "-pthread",
         "-fdiagnostics-color=always",
         "-g",
         //"${file}",
