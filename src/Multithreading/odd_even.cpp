@@ -11,13 +11,17 @@ void *printOdd(void *arg)
   while (1)
   {
     pthread_mutex_lock(&m);
-    if (count % 2 == 0)
+    if (count % 2 == 0) // this should be while because of spurious wakeup
     {
+      // thread releases mutex here and blocks (goes to sleep) on cond
       pthread_cond_wait(&cond, &m);
+      // mutex acquired again when call is returned (by call to pthread_cond_signal from other thread)
     }
     printf("%d ", count++);
     if (count > *max)
       break;
+    // only one of the thread waiting on cond gets unblocked depending on scheduling policy.
+    // pthread_cond_broadcast signals should be used to unblock all
     pthread_cond_signal(&cond);
     pthread_mutex_unlock(&m);
   }
@@ -41,7 +45,7 @@ void *printEven(void *arg)
   }
 }
 
-int main()
+int main_1()
 {
   pthread_t t1, t2;
   int max = 100;
