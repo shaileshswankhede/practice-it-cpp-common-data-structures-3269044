@@ -43,7 +43,7 @@ void *leftShift(void *arg)
   return NULL;
 }
 
-int main()
+int main_2()
 {
   pthread_t tid0, tid1, tid2, tid3;
   int localArr[100];
