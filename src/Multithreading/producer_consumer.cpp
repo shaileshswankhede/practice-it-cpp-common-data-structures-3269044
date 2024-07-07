@@ -44,7 +44,7 @@ void *consumer(void *arg)
   }
 }
 
-int main()
+int main_4()
 {
   pthread_t tid0, tid1;
   sem_init(&empty, 0, MAX_ITEMS);
@@ -53,5 +53,7 @@ int main()
   pthread_create(&tid1, NULL, consumer, NULL);
   pthread_join(tid0, NULL);
   pthread_join(tid1, NULL);
+  sem_destroy(&empty);
+  sem_destroy(&full);
   return 0;
 }
