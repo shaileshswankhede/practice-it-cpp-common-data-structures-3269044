@@ -12,7 +12,8 @@
         //"${file}",
         "${fileDirname}/*.cpp",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "${fileDirname}/${fileBasenameNoExtension}",
+        "-lrt",
       ],
       "options": {
         "cwd": "${fileDirname}"

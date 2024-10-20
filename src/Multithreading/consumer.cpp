@@ -16,7 +16,7 @@
 
 #define BUFF_SIZE 10
 
-int main()
+int main6()
 {
   int item;
   int consumed = 0;

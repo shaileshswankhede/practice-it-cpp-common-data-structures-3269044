@@ -43,7 +43,7 @@ void *leftShift(void *arg)
   return NULL;
 }
 
-int main_2()
+int main3()
 {
   pthread_t tid0, tid1, tid2, tid3;
   int localArr[100];
@@ -54,6 +54,8 @@ int main_2()
   pthread_detach(tid0); // Here pthread library will release resource as soon as tid0 exits without waiting for joins
 
   void *output;
+  sleep(3); // even though thread tid1 might have already exited, thread stack is preserved so as to get return value
+  // pthread_detach(tid1); // calling pthread_detach immediately releases resources and thread stack will and thus return will no longer will be valid
   pthread_join(tid1, &output);
   printf("return value from tid1 --> %d addr: %p\n", (*(int *)output), output);
   printf("freeing up memory allocated in tid1 for storing result\n");

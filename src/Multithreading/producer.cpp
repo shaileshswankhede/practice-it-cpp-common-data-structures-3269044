@@ -17,7 +17,7 @@
 
 #define BUFF_SIZE 10
 
-int main()
+int main5()
 {
   // create named semaphore
   sem_t *empty = sem_open(SEM_EMPTY, O_CREAT, 0644, BUFF_SIZE);
