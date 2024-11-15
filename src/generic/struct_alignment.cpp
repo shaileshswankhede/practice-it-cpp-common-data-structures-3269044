@@ -9,7 +9,7 @@ typedef struct
   int c;   // 4 byte
 } myStruct;
 
-int main()
+int main1()
 {
   printf("sizeof myStruct %d alignment %d\n", sizeof(myStruct), __alignof(myStruct));
   // on 32bit machine
